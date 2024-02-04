@@ -35,13 +35,13 @@ public sealed class AccountRepositoryTests : IClassFixture<StandardFixture>
         );
 
         await accountRepository
-            .Add(account, credit)
-            .ConfigureAwait(false);
+            .Add(account, credit);
+;
 
         await this._fixture
             .Context
-            .SaveChangesAsync()
-            .ConfigureAwait(false);
+            .SaveChangesAsync();
+;
 
         bool hasAnyAccount = this._fixture
             .Context
@@ -76,22 +76,18 @@ public sealed class AccountRepositoryTests : IClassFixture<StandardFixture>
         );
 
         await accountRepository
-            .Add(account, credit)
-            .ConfigureAwait(false);
+            .Add(account, credit);
 
         await this._fixture
             .Context
-            .SaveChangesAsync()
-            .ConfigureAwait(false);
+            .SaveChangesAsync();
 
         await accountRepository
-            .Delete(account.AccountId)
-            .ConfigureAwait(false);
+            .Delete(account.AccountId);
 
         await this._fixture
             .Context
-            .SaveChangesAsync()
-            .ConfigureAwait(false);
+            .SaveChangesAsync();
 
         bool hasAnyAccount = this._fixture
             .Context

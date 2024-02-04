@@ -5,14 +5,14 @@ using System.Reflection;
 using FeatureFlags;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.FeatureManagement;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Asp.Versioning.ApiExplorer;
 
 /// <summary>
 ///     Swagger Extensions.
@@ -23,7 +23,7 @@ public static class SwaggerExtensions
     {
         get
         {
-            string basePath = PlatformServices.Default.Application.ApplicationBasePath;
+            string basePath = ApplicationEnvironment.ApplicationBasePath;
             string fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
             return Path.Combine(basePath, fileName);
         }

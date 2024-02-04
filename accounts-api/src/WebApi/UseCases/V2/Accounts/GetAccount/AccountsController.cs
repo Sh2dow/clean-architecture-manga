@@ -6,6 +6,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Application.Services;
 using Application.UseCases.GetAccount;
+using Asp.Versioning;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

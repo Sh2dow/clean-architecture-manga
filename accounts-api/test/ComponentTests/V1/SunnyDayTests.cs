@@ -113,23 +113,14 @@ public sealed class SunnyDayTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task GetAccount_Withdraw_Deposit_Withdraw_Withdraw_Close()
     {
-        Tuple<Guid, decimal> account = await this.GetAccounts()
-            .ConfigureAwait(false);
-        await this.GetAccount(account.Item1.ToString())
-            .ConfigureAwait(false);
-        await this.Withdraw(account.Item1.ToString(), account.Item2)
-            .ConfigureAwait(false);
-        await this.Deposit(account.Item1.ToString(), 500)
-            .ConfigureAwait(false);
-        await this.Deposit(account.Item1.ToString(), 300)
-            .ConfigureAwait(false);
-        await this.Withdraw(account.Item1.ToString(), 400)
-            .ConfigureAwait(false);
-        await this.Withdraw(account.Item1.ToString(), 400)
-            .ConfigureAwait(false);
-        account = await this.GetAccounts()
-            .ConfigureAwait(false);
-        await this.Close(account.Item1.ToString())
-            .ConfigureAwait(false);
+        Tuple<Guid, decimal> account = await this.GetAccounts();
+        await this.GetAccount(account.Item1.ToString());
+        await this.Withdraw(account.Item1.ToString(), account.Item2);
+        await this.Deposit(account.Item1.ToString(), 500);
+        await this.Deposit(account.Item1.ToString(), 300);
+        await this.Withdraw(account.Item1.ToString(), 400);
+        await this.Withdraw(account.Item1.ToString(), 400);
+        account = await this.GetAccounts();
+        await this.Close(account.Item1.ToString());
     }
 }

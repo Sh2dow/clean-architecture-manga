@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Application.Services;
 using Application.UseCases.Withdraw;
+using Asp.Versioning;
 using Domain;
 using Domain.Debits;
 using Microsoft.AspNetCore.Authorization;

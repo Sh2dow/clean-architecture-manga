@@ -18,7 +18,7 @@ public sealed class CustomWebApplicationFactory : WebApplicationFactory<Startup>
                 {
                     ["FeatureManagement:SQLServer"] = "true",
                     ["PersistenceModule:DefaultConnection"] =
-                        "Server=localhost;User Id=sa;Password=<YourStrong!Passw0rd>;Database=Accounts;",
+                        "Data Source=.;Initial Catalog=aspnet-clean-architecture-manga;User ID=sa;Password=123;Encrypt=True;TrustServerCertificate=True;MultipleActiveResultSets=true",
                     ["FeatureManagement:CurrencyExchangeModule"] = "true"
                 });
         });

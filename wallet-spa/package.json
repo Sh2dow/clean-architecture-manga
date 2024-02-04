@@ -23,6 +23,9 @@
     "react-scripts": "5.0.1",
     "reactstrap": "^8.0.0"
   },
+  "devDependencies": {
+    "@babel/runtime": "^7.23.9"
+  },
   "scripts": {
     "start": "env-cmd -f .env.localhost react-scripts start",
     "start-localhost": "env-cmd -f .env.localhost react-scripts start",

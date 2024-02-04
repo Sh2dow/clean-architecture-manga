@@ -3,6 +3,7 @@ namespace WebApi.UseCases.V1.Accounts.GetAccounts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.UseCases.GetAccounts;
+using Asp.Versioning;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

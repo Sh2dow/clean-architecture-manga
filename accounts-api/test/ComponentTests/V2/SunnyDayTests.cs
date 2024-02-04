@@ -47,9 +47,7 @@ public sealed class SunnyDayTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task GetAccounts_GetAccount()
     {
-        Tuple<Guid, decimal> account = await this.GetAccounts()
-            .ConfigureAwait(false);
-        await this.GetAccount(account.Item1.ToString())
-            .ConfigureAwait(false);
+        Tuple<Guid, decimal> account = await this.GetAccounts();
+        await this.GetAccount(account.Item1.ToString());
     }
 }

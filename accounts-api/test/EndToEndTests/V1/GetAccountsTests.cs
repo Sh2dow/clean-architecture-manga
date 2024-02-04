@@ -19,8 +19,7 @@ public sealed class GetAccountsTests
             .CreateClient();
 
         HttpResponseMessage actualResponse = await client
-            .GetAsync("/api/v1/Accounts/")
-            .ConfigureAwait(false);
+            .GetAsync("/api/v1/Accounts/");
 
         Assert.Equal(HttpStatusCode.OK, actualResponse.StatusCode);
     }

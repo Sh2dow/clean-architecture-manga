@@ -1,6 +1,7 @@
 namespace WebApi.UseCases.V1.CustomError;
 
 using System.Diagnostics;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

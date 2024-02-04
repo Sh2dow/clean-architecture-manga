@@ -2,31 +2,27 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System.Collections.Generic;
-using IdentityServer4.Models;
+using Duende.IdentityServer.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace IdentityServer;
-
-using System.Collections.Generic;
-using IdentityServer4.Models;
-using Microsoft.Extensions.Configuration;
-
-public static class Config
+namespace IdentityServer
 {
-    private static Client authorizationCodeFlowClient;
-
-    public static IEnumerable<ApiScope> ApiScopes =>
-        new[] { new ApiScope("api1.read_only"), new ApiScope("api1.full_access") };
-
-    public static IEnumerable<IdentityResource> GetIdentityResources()
+    public static class Config
     {
-        return new IdentityResource[] { new IdentityResources.OpenId(), new IdentityResources.Profile() };
-    }
+        private static Client authorizationCodeFlowClient;
 
-    public static IEnumerable<ApiResource> GetApis()
-    {
-        return new[]
+        public static IEnumerable<ApiScope> ApiScopes =>
+            new[] { new ApiScope("api1.read_only"), new ApiScope("api1.full_access") };
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
         {
+            return new IdentityResource[] { new IdentityResources.OpenId(), new IdentityResources.Profile() };
+        }
+
+        public static IEnumerable<ApiResource> GetApis()
+        {
+            return new[]
+            {
                 new ApiResource
                 {
                     Name = "api1",
@@ -34,23 +30,24 @@ public static class Config
                     Scopes = {"api1.full_access", "api1.read_only"}
                 }
             };
-    }
+        }
 
-    public static IEnumerable<Client> GetClients(IConfiguration configuration)
-    {
-        authorizationCodeFlowClient = new Client
+        public static IEnumerable<Client> GetClients(IConfiguration configuration)
         {
-            ClientId = "spa",
-            ClientName = "Produce SPA React App",
-            RequirePkce = true,
-            RequireClientSecret = false,
-            AllowedGrantTypes = GrantTypes.Code,
-            RedirectUris = { configuration["RedirectUris"] },
-            PostLogoutRedirectUris = { configuration["PostLogoutRedirectUris"] },
-            AllowedCorsOrigins = { configuration["AllowedCorsOrigins"] },
-            AllowedScopes = { "openid", "profile", "api1.read_only", "api1.full_access" }
-        };
+            authorizationCodeFlowClient = new Client
+            {
+                ClientId = "spa",
+                ClientName = "Produce SPA React App",
+                RequirePkce = true,
+                RequireClientSecret = false,
+                AllowedGrantTypes = GrantTypes.Code,
+                RedirectUris = { configuration["RedirectUris"] },
+                PostLogoutRedirectUris = { configuration["PostLogoutRedirectUris"] },
+                AllowedCorsOrigins = { configuration["AllowedCorsOrigins"] },
+                AllowedScopes = { "openid", "profile", "api1.read_only", "api1.full_access" }
+            };
 
-        return new[] { authorizationCodeFlowClient };
+            return new[] { authorizationCodeFlowClient };
+        }
     }
 }

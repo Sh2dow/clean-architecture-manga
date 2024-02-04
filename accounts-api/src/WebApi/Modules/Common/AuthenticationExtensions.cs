@@ -35,18 +35,14 @@ public static class AuthenticationExtensions
         {
             services.AddScoped<IUserService, ExternalUserService>();
 
-            services
-                .AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication("Bearer", options =>
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
                 {
-                        // set the Identity.API service as the authority on authentication/authorization
-                        options.Authority = configuration["AuthenticationModule:AuthorityUrl"];
-                    options.ApiName = "api1";
+                    options.Authority = configuration["AuthenticationModule:AuthorityUrl"];
+                    options.Audience = "api1"; // Audience is similar to ApiName in IdentityServer4
+                    options.RequireHttpsMetadata = false; // Adjust based on your environment
+                });
 
-                    options.RequireHttpsMetadata = false;
-
-                        // set the name of the API that's talking to the Identity API
-                    });
         }
         else
         {
